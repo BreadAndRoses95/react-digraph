@@ -1348,15 +1348,26 @@ class GraphView extends React.Component<IGraphViewProps, IGraphViewState> {
     edge: IEdge,
     nodeMoving: boolean = false
   ) => {
+    const { source, target } = edge;
+    const isSourceOrTargetNotFound =
+      !this.getNodeById(source) || !this.getNodeById(target);
+
     if (!this.entities) {
       return null;
     }
 
     let containerId = `${id}-container`;
+    let edgeContainer = document.getElementById(containerId);
     const customContainerId = `${id}-custom-container`;
+
+    if (isSourceOrTargetNotFound && edgeContainer && edgeContainer.parentNode) {
+      edgeContainer.parentNode.removeChild(edgeContainer);
+
+      return null;
+    }
+
     const { draggedEdge } = this.state;
     const { afterRenderEdge } = this.props;
-    let edgeContainer = document.getElementById(containerId);
 
     if (nodeMoving && edgeContainer) {
       edgeContainer.style.display = 'none';
