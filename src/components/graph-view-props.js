@@ -18,6 +18,7 @@
 import { type LayoutEngineType } from '../utilities/layout-engine/layout-engine-types';
 import { type IEdge } from './edge';
 import { type INode } from './node';
+import { type IViewTransform } from './graph-view';
 
 export type IBBox = {
   x: number,
@@ -27,6 +28,7 @@ export type IBBox = {
 };
 
 export type IGraphViewProps = {
+  onViewTransformUpdated?: (viewTransform: IViewTransform) => void,
   backgroundFillId?: string,
   edges: any[],
   edgeArrowSize?: number,

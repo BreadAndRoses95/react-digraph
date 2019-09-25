@@ -29,7 +29,7 @@ import GraphControls from './graph-controls';
 import GraphUtils, { type INodeMapNode } from './graph-util';
 import Node, { type INode, type IPoint } from './node';
 
-type IViewTransform = {
+export type IViewTransform = {
   k: number,
   x: number,
   y: number,
@@ -67,6 +67,7 @@ class GraphView extends React.Component<IGraphViewProps, IGraphViewState> {
     canCreateEdge: (startNode?: INode, endNode?: INode) => true,
     canDeleteEdge: () => true,
     canDeleteNode: () => true,
+    onViewTransformUpdated: () => true,
     edgeArrowSize: 8,
     gridSpacing: 36,
     layoutEngineType: 'None',
@@ -992,6 +993,7 @@ class GraphView extends React.Component<IGraphViewProps, IGraphViewState> {
 
       // prevent re-rendering on zoom
       if (this.state.viewTransform !== transform) {
+        this.props.onViewTransformUpdated(transform);
         this.setState(
           {
             viewTransform: transform,
