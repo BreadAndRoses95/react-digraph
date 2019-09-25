@@ -408,7 +408,7 @@ class Edge extends React.Component<IEdgeProps> {
   ) {
     let response = Edge.getDefaultIntersectResponse();
 
-    if (!trg[nodeKey]) {
+    if (!trg || !src || !trg[nodeKey]) {
       return response;
     }
 
