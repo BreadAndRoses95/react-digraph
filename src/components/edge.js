@@ -59,8 +59,8 @@ class Edge extends React.Component<IEdgeProps> {
   };
 
   static getTheta(pt1: any, pt2: any) {
-    const xComp = (pt2.x || 0) - (pt1.x || 0);
-    const yComp = (pt2.y || 0) - (pt1.y || 0);
+    const xComp = ((pt2 || { x: 0 }).x || 0) - ((pt1 || { x: 0 }).x || 0);
+    const yComp = ((pt2 || { x: 0 }).y || 0) - ((pt1 || { x: 0 }).y || 0);
     const theta = Math.atan2(yComp, xComp);
 
     return theta;
