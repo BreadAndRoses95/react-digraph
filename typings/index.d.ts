@@ -15,11 +15,11 @@
 */
 
 declare module "react-digraph" {
-  export interface IViewTransform = {
+  export interface IViewTransform {
     k: number;
     x: number;
     y: number;
-  };
+  }
 
   export type INode = {
     title: string;
