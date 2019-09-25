@@ -15,6 +15,11 @@
 */
 
 declare module "react-digraph" {
+  export interface IViewTransform = {
+    k: number;
+    x: number;
+    y: number;
+  };
 
   export type INode = {
     title: string;
@@ -124,6 +129,7 @@ declare module "react-digraph" {
     onSelectEdge: (selectedEdge: IEdge) => void;
     onSelectNode: (node: INode | null) => void;
     onSwapEdge: (sourceNode: INode, targetNode: INode, edge: IEdge) => void;
+    onViewTransformUpdated?: (viewTransform: IViewTransform) => void;
     onUndo?: () => void;
     onUpdateNode: (node: INode) => void;
     renderBackground?: (gridSize?: number) => any;
