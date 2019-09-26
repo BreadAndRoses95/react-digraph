@@ -651,9 +651,16 @@ class Edge extends React.Component<IEdgeProps> {
   }
 
   render() {
-    const { data, edgeTypes, edgeHandleSize, viewWrapperElem } = this.props;
+    const {
+      data,
+      edgeTypes,
+      edgeHandleSize,
+      viewWrapperElem,
+      sourceNode,
+      targetNode,
+    } = this.props;
 
-    if (!viewWrapperElem) {
+    if (!viewWrapperElem || !sourceNode || !targetNode) {
       return null;
     }
 
